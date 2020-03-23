@@ -38,6 +38,24 @@ a:hover {
   font-family: threetwosevenzero;
   src: url(../3270-Regular.otf);
 }
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes slash {
+	0% {
+		content: '—';
+	}
+	25% {
+		content: '\\';
+	}
+	50% {
+		content: '|';
+	}
+	75% {
+		content: '/';
+	}
+}
 @keyframes flicker {
   0% {
       opacity: 0.27861;
@@ -288,6 +306,7 @@ a:hover {
     border-radius: 3rem;*/
     border: 1px solid rgb(143, 123, 99);
     box-shadow: inset 0 0 0px 4px #c8bca4;
+    pointer-events: none;
 }
 .box__face--right  {
     background: linear-gradient(90deg, rgb(202, 190, 166) 0%, rgb(149, 141, 127) 50%);
@@ -365,11 +384,11 @@ a:hover {
 .box__back--panel--image {
     position: absolute;
     margin: auto;
-    width: 44%;
-    height: 15%;
+    width: 50%;
+    height: 19%;
     left: 0;
     right: 0;
-    top: 20%;
+    top: 11%;
     border: 2px solid #000;
     box-shadow: -2px -2px 5px 0px #232323;
     background: url(../sticker.jpg) center;
@@ -455,14 +474,14 @@ a:hover {
     border-radius: 1rem;
     border: 2rem solid;
     border-width: 2.5rem 1.2rem;
-    border-color: #1d1d1d #101010a3 #080808;
+    border-color: #8c8679 #696258 #524e47;
     box-shadow: inset 0px 0px 25px 25px #000000;
     text-align: initial;
     line-height: initial;
     z-index: 2;
     text-shadow: 0rem 0.2rem 1rem #0c7b46;
     transform: rotateY( 180deg);
-    animation: textShadow 1.6s infinite;
+    /*animation: textShadow 1.6s infinite;*/
     filter: brightness(1);
     background-color: #1b2b22;
 }
@@ -510,31 +529,118 @@ a:hover {
     filter: brightness(0.4);
 }
 .inner-margin {
-    font-size: 20pt;
-    margin: 4%;
-    height: 77%;
+    font-size: 19pt;
+    padding: 5.5%;
+    height: 84.5%;
     color: #26e583;
-    /*font-family: threetwosevenzero;*/
+    /* font-family: threetwosevenzero; */
     font-family: "VT323";
     font-weight: lighter;
+    letter-spacing: 1px;
 }
-.inner-margin::selection {
+.inner-margin::selection, .inner-margin a:hover, .inner-margin a:focus, .inner-margin a:active {
     /*background-color: #14fdce;
     color: #031e11;*/
     background-color: rgb(6, 169, 113);
     color: rgb(7, 57, 27);
 }
+.inner-margin a, .inner-margin a:visited {
+    border-bottom: 0.2rem solid #26e583;
+    color: #26e583;
+    text-decoration: none;
+}
+.inner-margin li::before {
+  color: red;
+}
 .crt::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(18, 16, 16, 0.1);
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-  animation: flicker 0.15s infinite;
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(18, 16, 16, 0.1);
+	opacity: 0;
+	z-index: 2;
+	pointer-events: none;
+	animation: flicker 0.15s infinite;
+}
+.fade-in {
+	opacity:0;
+	-webkit-animation:fadeIn ease-in 1;
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+	animation-duration:0.5s;
+}
+.fade-in.one {
+	margin: 0;
+	animation-delay: 0.1s;
+}
+.fade-in.two {
+	animation-delay: 0.3s;
+}
+.fade-in.three {
+	animation-delay: 0.6s;
+}
+.fade-in.four {
+	animation-delay: 0.9s;
+}
+.fade-in.five {
+	animation-delay: 1.12s;
+}
+.fade-in.six {
+	margin-bottom: 0;
+	animation-delay: 2.15s;
+}
+.loading:after {
+	content: '—';
+	animation: slash 2000ms infinite;
+}
+.box__back--panel--led {
+    position: absolute;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    left: 0;
+    bottom: 44%;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #beff4a 3px -3px 13px 0px;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 5%, #b3ff2a 100%);
+}
+.box__back--panel--wheel--one {
+    position: absolute;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    right: 14%;
+    left: 0;
+    bottom: 29%;
+    box-shadow: -10px 0px 0px 1px #444141;
+    border-radius: 50%;
+    background: url(../1.jpg) center;
+    background-size: 106%;
+    transform: rotateY(180deg);
+}
+.box__back--panel--wheel--two {
+    position: absolute;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    right: 14%;
+    left: 0;
+    bottom: 15%;
+    box-shadow: -10px 0px 0px 1px #444141;
+    border-radius: 50%;
+    background: url(../2.jpg) center;
+    background-size: 106%;
+    transform: rotateY(180deg);
 }
